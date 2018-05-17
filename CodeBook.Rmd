@@ -1,0 +1,34 @@
+---
+title: "CodeBook"
+author: "Actin"
+date: "May 16, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Getting and Cleaning Data Course Project
+
+The cell phone acceleremeter data for this project was obtained from <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>.
+
+A number of transformations were performed in order to make the data tidy:
+
+1) The volunteer ID and activity data was merged with the corrsponding oberved values.
+2) The test data and training data were merged.
+3) The columns were organized to contain one variable per column. In the original dataset, each of the data columns has multiple variables: the domain(time/frequency), the operation applied to the measure (mean/standard deviation), the spatial component (x, y, or z) being reported, or the total magnitude, and the measure observed.
+4) The mean of the mean (the overall mean) and the mean of the standard deviation was calculated for each unique combination of subject, activity and the variables listed in item 3 above.
+
+The following is a codebook for the main output:
+
+
+```{r echo=FALSE, results='asis', message=FALSE, warning=FALSE}
+source("run_analysis.R")
+
+require(knitr)
+
+kable(codetable, row.names = F, col.names = c("Variable", "Type", "Description"))
+
+```
+
